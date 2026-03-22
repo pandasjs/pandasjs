@@ -1,0 +1,52 @@
+id: window
+title: Window Operations
+sidebar: Window
+desc: Rolling, expanding, and exponential weighted moving averages.
+type: code-compare
+examples:
+    - js: |
+        import pd from '@rockiey/pandasjs'
+        // rolling
+        const s = pd.Series([1, 2, 3, 4, 5, 6, 7, 8])
+        console.log(s.rolling(3).mean())
+        console.log(s.rolling(3).apply(arr => arr.reduce((a, b) => a + b, 0)))
+        console.log(s.rolling(4).quantile(0.5))
+        console.log(s.rolling(4).sem())
+        console.log(s.rolling(4).skew())
+        console.log(s.rolling(4).kurt())
+      python: |
+        import pandas as pd
+        # rolling
+        s = pd.Series([1, 2, 3, 4, 5, 6, 7, 8])
+        print(s.rolling(3).mean())
+        print(s.rolling(3).apply(lambda arr: arr.sum()))
+        print(s.rolling(4).quantile(0.5))
+        print(s.rolling(4).sem())
+        print(s.rolling(4).skew())
+        print(s.rolling(4).kurt())
+    - js: |
+        import pd from '@rockiey/pandasjs'
+        // expanding
+        const s = pd.Series([1, 2, 3, 4, 5, 6, 7, 8])
+        console.log(s.expanding().sum())
+        console.log(s.expanding({minPeriods: 1}).apply(arr => arr.reduce((a, b) => a + b, 0)))
+        console.log(s.expanding({minPeriods: 1}).quantile(0.5))
+        console.log(s.expanding({minPeriods: 2}).sem())
+      python: |
+        import pandas as pd
+        # expanding
+        s = pd.Series([1, 2, 3, 4, 5, 6, 7, 8])
+        print(s.expanding().sum())
+        print(s.expanding(min_periods=1).apply(lambda arr: arr.sum()))
+        print(s.expanding(min_periods=1).quantile(0.5))
+        print(s.expanding(min_periods=2).sem())
+    - js: |
+        import pd from '@rockiey/pandasjs'
+        // exponential weighted moving average
+        const s = pd.Series([1, 2, 3, 4, 5, 6, 7, 8])
+        console.log(s.ewm({span: 3}).mean())
+      python: |
+        import pandas as pd
+        # exponential weighted moving average
+        s = pd.Series([1, 2, 3, 4, 5, 6, 7, 8])
+        print(s.ewm(span=3).mean())

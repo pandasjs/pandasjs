@@ -1,0 +1,21 @@
+id: install
+title: Install
+sidebar: Install
+desc: Install via npm or include from CDN.
+type: code-blocks
+blocks:
+    - code: |
+        > npm install @rockiey/pandasjs
+
+        import pd from '@rockiey/pandasjs'
+    - code: |
+        <!-- CDN (browser global) -->
+        <script src="https://cdn.jsdelivr.net/npm/@rockiey/pandasjs/dist/@rockiey/pandasjs.min.js"></script>
+    - code: |
+        <!-- ESM from CDN -->
+        <script type="module">
+        import pd from 'https://cdn.jsdelivr.net/npm/@rockiey/pandasjs/dist/@rockiey/pandasjs.esm.js'
+        </script>
+    - text: "Node.js (CommonJS):"
+    - code: |
+        const pd = require('@rockiey/pandasjs')

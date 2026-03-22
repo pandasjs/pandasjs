@@ -1,0 +1,27 @@
+id: creation
+title: "Creation & Access"
+sidebar: Creation
+desc: "Create DataFrames from objects or arrays. Access properties like shape, columns, dtypes."
+type: code-compare
+js: |
+    import pd from '@rockiey/pandasjs'
+    // from dict
+    const df = pd.DataFrame({a: [1,2,3], b: [4,5,6]})
+    console.log(df.shape)
+    console.log(df.columns)
+    console.log(df.dtypes)
+
+    // Series
+    const s = pd.Series([10, 20, 30], {name: 'vals'})
+    console.log(s)
+python: |
+    import pandas as pd
+    # from dict
+    df = pd.DataFrame({'a': [1,2,3], 'b': [4,5,6]})
+    print(df.shape)
+    print(df.columns.tolist())
+    print(df.dtypes)
+
+    # Series
+    s = pd.Series([10, 20, 30], name='vals')
+    print(s)

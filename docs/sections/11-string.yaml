@@ -1,0 +1,68 @@
+id: string
+title: String Operations
+sidebar: String
+desc: "String methods via the .str accessor: upper, lower, contains, replace, split, and more."
+type: code-compare
+examples:
+    - js: |
+        import pd from '@rockiey/pandasjs'
+        const s = pd.Series(['hello world', 'foo bar', 'pandas js'])
+        console.log(s.str.upper())
+        console.log(s.str.contains('o'))
+        console.log(s.str.split(' '))
+      python: |
+        import pandas as pd
+        s = pd.Series(['hello world', 'foo bar', 'pandas js'])
+        print(s.str.upper())
+        print(s.str.contains('o'))
+        print(s.str.split(' '))
+    - js: |
+        import pd from '@rockiey/pandasjs'
+        // padding & alignment
+        const s = pd.Series(['hello world', 'foo bar', 'pandas js'])
+        console.log(s.str.center(20))
+        console.log(s.str.ljust(20, '-'))
+        console.log(s.str.rjust(20, '-'))
+
+        // matching
+        console.log(s.str.match('hello'))
+        console.log(s.str.fullmatch('foo bar'))
+      python: |
+        import pandas as pd
+        # padding & alignment
+        s = pd.Series(['hello world', 'foo bar', 'pandas js'])
+        print(s.str.center(20))
+        print(s.str.ljust(20, '-'))
+        print(s.str.rjust(20, '-'))
+
+        # matching
+        print(s.str.match('hello'))
+        print(s.str.fullmatch('foo bar'))
+    - js: |
+        import pd from '@rockiey/pandasjs'
+        // character tests
+        const t = pd.Series(['abc123', 'ab c', '!!'])
+        console.log(t.str.isalnum())
+        console.log(t.str.islower())
+
+        // prefix/suffix removal
+        const files = pd.Series(['test_one', 'test_two', 'other'])
+        console.log(files.str.removeprefix('test_'))
+        console.log(pd.Series(['a.txt', 'b.csv']).str.removesuffix('.txt'))
+
+        // repeat
+        console.log(pd.Series(['ab', 'cd']).str.repeat(3))
+      python: |
+        import pandas as pd
+        # character tests
+        t = pd.Series(['abc123', 'ab c', '!!'])
+        print(t.str.isalnum())
+        print(t.str.islower())
+
+        # prefix/suffix removal
+        files = pd.Series(['test_one', 'test_two', 'other'])
+        print(files.str.removeprefix('test_'))
+        print(pd.Series(['a.txt', 'b.csv']).str.removesuffix('.txt'))
+
+        # repeat
+        print(pd.Series(['ab', 'cd']).str.repeat(3))

@@ -1,0 +1,82 @@
+id: reshape
+title: "Reshape & Combine"
+sidebar: Reshape
+desc: Concat, merge, pivot, melt, stack, and explode.
+type: code-compare
+examples:
+    - js: |
+        import pd from '@rockiey/pandasjs'
+        // concat
+        const df1 = pd.DataFrame({a: [1,2], b: [3,4]})
+        const df2 = pd.DataFrame({a: [5,6], b: [7,8]})
+        console.log(pd.concat([df1, df2], {ignoreIndex: true}))
+
+        // merge
+        const left = pd.DataFrame({key: ['a','b'], val: [1,2]})
+        const right = pd.DataFrame({key: ['a','b'], val2: [3,4]})
+        console.log(left.merge(right, {on: 'key'}))
+        console.log(pd.merge(left, right, {on: 'key'}))
+      python: |
+        import pandas as pd
+        # concat
+        df1 = pd.DataFrame({'a': [1,2], 'b': [3,4]})
+        df2 = pd.DataFrame({'a': [5,6], 'b': [7,8]})
+        print(pd.concat([df1, df2], ignore_index=True))
+
+        # merge
+        left = pd.DataFrame({'key': ['a','b'], 'val': [1,2]})
+        right = pd.DataFrame({'key': ['a','b'], 'val2': [3,4]})
+        print(left.merge(right, on='key'))
+        print(pd.merge(left, right, on='key'))
+    - js: |
+        import pd from '@rockiey/pandasjs'
+        
+        // join on index
+        const a = pd.DataFrame({x: [1,2]}, {index: ['a','b']})
+        const b = pd.DataFrame({y: [3,4]}, {index: ['a','b']})
+        console.log(a.join(b))
+
+        // insert & pop
+        const df = pd.DataFrame({a: [1,2], b: [3,4]})
+        df.insert(1, 'mid', [10, 20])
+        console.log(df.pop('b'))
+
+        // combineFirst
+        const base = pd.DataFrame({a: [1, null], b: [null, 4]})
+        const fill = pd.DataFrame({a: [10, 20], b: [30, 40]})
+        console.log(base.combineFirst(fill))
+      python: |
+        import pandas as pd
+        import numpy as np
+        # join on index
+        a = pd.DataFrame({'x': [1,2]}, index=['a','b'])
+        b = pd.DataFrame({'y': [3,4]}, index=['a','b'])
+        print(a.join(b))
+
+        # insert & pop
+        df = pd.DataFrame({'a': [1,2], 'b': [3,4]})
+        df.insert(1, 'mid', [10, 20])
+        print(df.pop('b'))
+
+        # combine_first
+        base = pd.DataFrame({'a': [1, np.nan], 'b': [np.nan, 4]})
+        fill = pd.DataFrame({'a': [10, 20], 'b': [30, 40]})
+        print(base.combine_first(fill))
+    - js: |
+        import pd from '@rockiey/pandasjs'
+        // top-level utilities
+        console.log(pd.unique([1, 2, 2, 3]))
+        console.log(pd.factorize(['a', 'b', 'a', 'c']))
+        console.log(pd.crosstab(
+            pd.Series(['a','a','b','b']),
+            pd.Series(['x','y','x','y'])
+        ))
+      python: |
+        import pandas as pd
+        # top-level utilities
+        print(pd.unique(pd.array([1, 2, 2, 3])))
+        print(pd.factorize(pd.array(['a', 'b', 'a', 'c'])))
+        print(pd.crosstab(
+            pd.Series(['a','a','b','b']),
+            pd.Series(['x','y','x','y'])
+        ))

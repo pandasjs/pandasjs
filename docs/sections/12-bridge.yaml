@@ -1,0 +1,38 @@
+id: bridge
+title: "pd.run() - Python Transpiler"
+sidebar: "pd.run()"
+desc: "Transpile Python pandas code to JavaScript and run it natively. No Pyodide, no browser requirement."
+type: mixed
+blocks:
+    - code: |
+        import pd from '@rockiey/pandasjs'
+
+        // transpile and run Python pandas code as JS
+        const df = pd.run(`
+            df = pd.DataFrame({'x': [1,2,3], 'y': [4,5,6]})
+            df.groupby('x').sum()
+        `)
+        console.log(df) // pandasjs DataFrame
+        console.log(df.col('y').mean())
+    - text: "You can also just transpile without running:"
+    - code: |
+        const jsCode = pd.transpile(`
+            import pandas as pd
+            df = pd.DataFrame({'name': ['Alice', 'Bob'], 'score': [85, 92]})
+            df.describe()
+        `)
+        console.log(jsCode)
+        // let df = pd.DataFrame({name: ['Alice', 'Bob'], score: [85, 92]})
+        // return df.describe()
+    - text: "Supported Python → JS transformations:"
+    - list:
+        - "import pandas as pd → removed"
+        - "True/False/None → true/false/null"
+        - "print() → console.log()"
+        - "{'key': val} → {key: val}"
+        - "x = expr → let x = expr"
+        - ".iloc[n] → .iloc(n), .loc[n] → .loc(n)"
+        - "df['col'] → df.col('col')"
+        - "len(x) → x.length"
+        - "Last expression becomes the return value"
+    - text: "Works in both browser and Node.js."

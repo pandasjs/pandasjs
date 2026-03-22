@@ -1,0 +1,48 @@
+{
+	"name": "@rockiey/pandasjs",
+	"version": "1.0.1",
+	"description": "Pandas for JavaScript - zero dependencies",
+	"type": "module",
+	"main": "dist/pandasjs.cjs",
+	"module": "dist/pandasjs.esm.js",
+	"browser": "dist/pandasjs.min.js",
+	"exports": {
+		".": {
+			"browser": "./dist/pandasjs.min.js",
+			"import": "./dist/pandasjs.esm.js",
+			"require": "./dist/pandasjs.cjs"
+		}
+	},
+	"files": [
+		"dist/",
+		"src/",
+		"LICENSE"
+	],
+	"scripts": {
+		"build": "node build.js",
+		"dev": "node build.js && node server.js",
+		"docs": "vite docs",
+		"test": "node test/runner.js"
+	},
+	"keywords": [
+		"pandas",
+		"dataframe",
+		"series",
+		"data",
+		"analysis",
+		"csv",
+		"groupby",
+		"rolling",
+		"pivot"
+	],
+	"license": "MIT",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/pandasjs/pandasjs"
+	},
+	"devDependencies": {
+		"esbuild": "^0.25.0",
+		"js-yaml": "^4.1.1",
+		"vite": "^8.0.1"
+	}
+}

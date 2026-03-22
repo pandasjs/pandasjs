@@ -1,0 +1,21 @@
+id: datetime
+title: DateTime
+sidebar: DateTime
+desc: "Parse dates with to_datetime, generate ranges with date_range, and access components via .dt accessor."
+type: code-compare
+js: |
+    import pd from '@rockiey/pandasjs'
+    const s = pd.to_datetime(pd.Series(['2024-01-15', '2024-06-20']))
+    console.log(s.dt.month)
+    console.log(s.dt.dayofweek)
+
+    const dates = pd.date_range({start: '2024-01-01', periods: 5})
+    console.log(dates)
+python: |
+    import pandas as pd
+    s = pd.to_datetime(pd.Series(['2024-01-15', '2024-06-20']))
+    print(s.dt.month)
+    print(s.dt.dayofweek)
+
+    dates = pd.date_range(start='2024-01-01', periods=5)
+    print(dates)

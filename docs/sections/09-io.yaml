@@ -1,0 +1,18 @@
+id: io
+title: "IO (CSV & JSON)"
+sidebar: IO
+desc: "Read and write CSV and JSON strings. Convert types with to_numeric and get_dummies."
+type: code-compare
+js: |
+    import pd from '@rockiey/pandasjs'
+    const csvText = 'name,age\nAlice,30\nBob,25'
+    const df = pd.read_csv(csvText)
+    console.log(df)
+    console.log(pd.to_csv(df, {index: false}))
+python: |
+    import pandas as pd
+    import io
+    csv_text = 'name,age\nAlice,30\nBob,25'
+    df = pd.read_csv(io.StringIO(csv_text))
+    print(df)
+    print(df.to_csv(index=False))

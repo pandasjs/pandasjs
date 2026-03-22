@@ -1,0 +1,29 @@
+id: selection
+title: "Selection & Indexing"
+sidebar: Selection
+desc: "Select columns, rows, and slices using iloc (integer) and loc (label) indexing."
+type: code-compare
+js: |
+    import pd from '@rockiey/pandasjs'
+    const df = pd.DataFrame({
+        a: [10, 20, 30, 40, 50],
+        b: [1, 2, 3, 4, 5]
+    })
+    // column access
+    console.log(df.col('a'))
+    // iloc slice
+    console.log(df.iloc({start: 1, stop: 3}))
+    // single value
+    console.log(df.iat(0, 1))
+python: |
+    import pandas as pd
+    df = pd.DataFrame({
+        'a': [10, 20, 30, 40, 50],
+        'b': [1, 2, 3, 4, 5]
+    })
+    # column access
+    print(df['a'])
+    # iloc slice
+    print(df.iloc[1:3])
+    # single value
+    print(df.iat[0, 1])

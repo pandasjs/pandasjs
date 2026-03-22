@@ -1,0 +1,90 @@
+id: groupby
+title: GroupBy
+sidebar: GroupBy
+desc: Group by one or more columns, then aggregate, transform, or filter.
+type: code-compare
+examples:
+    - js: |
+        import pd from '@rockiey/pandasjs'
+        const df = pd.DataFrame({
+            team: ['A','A','B','B','A'],
+            score: [10, 20, 30, 40, 50]
+        })
+        const g = df.groupby('team')
+        console.log(g.sum())
+        console.log(g.agg({score: ['mean', 'max']}))
+      python: |
+        import pandas as pd
+        df = pd.DataFrame({
+            'team': ['A','A','B','B','A'],
+            'score': [10, 20, 30, 40, 50]
+        })
+        g = df.groupby('team')
+        print(g.sum())
+        print(g.agg({'score': ['mean', 'max']}))
+    - js: |
+        import pd from '@rockiey/pandasjs'
+        const df = pd.DataFrame({
+            team: ['A','A','B','B','A'],
+            score: [10, 20, 30, 40, 50]
+        })
+        const g = df.groupby('team')
+        // cumulative within groups
+        console.log(g.cumsum())
+        console.log(g.cumcount())
+        console.log(g.rank())
+
+        // nth, head, tail
+        console.log(g.nth(0))
+        console.log(g.head(1))
+        console.log(g.tail(1))
+      python: |
+        import pandas as pd
+        df = pd.DataFrame({
+            'team': ['A','A','B','B','A'],
+            'score': [10, 20, 30, 40, 50]
+        })
+        g = df.groupby('team')
+        # cumulative within groups
+        print(g.cumsum())
+        print(g.cumcount())
+        print(g.rank())
+
+        # nth, head, tail
+        print(g.nth(0))
+        print(g.head(1))
+        print(g.tail(1))
+    - js: |
+        import pd from '@rockiey/pandasjs'
+        const df = pd.DataFrame({
+            team: ['A','A','B','B','A'],
+            score: [10, 20, 30, 40, 50]
+        })
+        const g = df.groupby('team')
+        // get_group, ngroup, describe
+        console.log(g.getGroup('A'))
+        console.log(g.ngroup())
+        console.log(g.describe())
+
+        // shift, diff, fillna, pipe
+        console.log(g.shift(1))
+        console.log(g.diff())
+        console.log(g.fillna(0))
+        console.log(g.pipe(grp => grp.sum()))
+      python: |
+        import pandas as pd
+        df = pd.DataFrame({
+            'team': ['A','A','B','B','A'],
+            'score': [10, 20, 30, 40, 50]
+        })
+        g = df.groupby('team')
+        # get_group, ngroup, describe
+        print(g.get_group('A'))
+        print(g.ngroup())
+        print(g.describe())
+
+        # shift, diff, fillna, pipe
+        print(g.shift(1))
+        print(g.diff())
+        print(g.fillna(0))
+        print(g.pipe(lambda grp: grp.sum()))

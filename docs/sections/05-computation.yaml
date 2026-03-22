@@ -1,0 +1,86 @@
+id: computation
+title: "Computation & Aggregation"
+sidebar: Computation
+desc: "Statistical operations, arithmetic, cumulative functions, and more."
+type: code-compare
+examples:
+    - js: |
+        import pd from '@rockiey/pandasjs'
+        const s = pd.Series([1, 2, 3, 4, 5])
+        console.log('sum:', s.sum())
+        console.log('mean:', s.mean())
+        console.log('std:', s.std())
+        console.log('sem:', s.sem())
+
+        const df = pd.DataFrame({a: [1,2,3], b: [4,5,6]})
+        console.log(df.describe())
+      python: |
+        import pandas as pd
+        s = pd.Series([1, 2, 3, 4, 5])
+        print('sum:', s.sum())
+        print('mean:', s.mean())
+        print('std:', s.std())
+        print('sem:', s.sem())
+
+        df = pd.DataFrame({'a': [1,2,3], 'b': [4,5,6]})
+        print(df.describe())
+    - js: |
+        import pd from '@rockiey/pandasjs'
+        // series arithmetic
+        const s = pd.Series([1, 2, 3, 4, 5])
+        console.log(s.floordiv(2))
+        console.log(s.mod(3))
+        console.log(s.pow(2))
+        console.log(s.radd(10))
+
+        // dataframe arithmetic
+        const df = pd.DataFrame({a: [1,2,3], b: [4,5,6]})
+        console.log(df.add(10))
+        console.log(df.mul(2))
+        console.log(df.abs())
+      python: |
+        import pandas as pd
+        # series arithmetic
+        s = pd.Series([1, 2, 3, 4, 5])
+        print(s.floordiv(2))
+        print(s.mod(3))
+        print(s.pow(2))
+        print(s.radd(10))
+
+        # dataframe arithmetic
+        df = pd.DataFrame({'a': [1,2,3], 'b': [4,5,6]})
+        print(df.add(10))
+        print(df.mul(2))
+        print(df.abs())
+    - js: |
+        import pd from '@rockiey/pandasjs'
+        // cumulative & advanced stats
+        const df = pd.DataFrame({a: [1,2,3], b: [4,5,6]})
+        console.log(df.cumsum())
+        console.log(df.diff())
+        console.log(df.rank())
+        console.log(df.skew())
+        console.log(df.kurt())
+        console.log(df.cov())
+
+        // series covariance & autocorrelation
+        const a = pd.Series([1, 2, 3, 4, 5])
+        const b = pd.Series([5, 4, 3, 2, 1])
+        console.log(a.cov(b))
+        console.log(a.autocorr(1))
+      python: |
+        import pandas as pd
+        # cumulative & advanced stats
+        df = pd.DataFrame({'a': [1,2,3], 'b': [4,5,6]})
+        print(df.cumsum())
+        print(df.diff())
+        print(df.rank())
+        print(df.skew())
+        print(df.kurt())
+        print(df.cov())
+
+        # series covariance & autocorrelation
+        a = pd.Series([1, 2, 3, 4, 5])
+        b = pd.Series([5, 4, 3, 2, 1])
+        print(a.cov(b))
+        print(a.autocorr(1))

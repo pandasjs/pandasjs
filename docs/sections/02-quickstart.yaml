@@ -1,0 +1,21 @@
+id: quickstart
+title: Quick Start
+sidebar: Quick Start
+desc: PandasJS is inspired by the Python pandas API. Familiar patterns for pandas users.
+type: code-compare
+js: |
+    import pd from '@rockiey/pandasjs'
+    const df = pd.DataFrame({
+        name: ['Alice', 'Bob', 'Charlie'],
+        score: [85, 92, 78]
+    })
+    console.log(df)
+    console.log(df.col('score').mean())
+python: |
+    import pandas as pd
+    df = pd.DataFrame({
+        'name': ['Alice', 'Bob', 'Charlie'],
+        'score': [85, 92, 78]
+    })
+    print(df)
+    print(df['score'].mean())
